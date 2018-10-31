@@ -3,15 +3,6 @@
 var canvas = document.querySelector(".screen-grid");
 var ctx = canvas.getContext("2d");
 
-  
-// attempting the grid underneath 
-//for (var i=0; i< 50; i++){
-//     for (var j=0; j< 70; j++){
-
-//     }}
-
-
-
 // getting the initial drawing dot
     var dotImg = new Image();
     dotImg.src = "./images/dot.jpg";
@@ -22,7 +13,6 @@ var ctx = canvas.getContext("2d");
 
 //start drawing
     drawingLoop();
-   
 
     document.onkeydown = function (event) {
         switch (event.keyCode) {
@@ -51,51 +41,57 @@ var ctx = canvas.getContext("2d");
             drawingLoop();
             });
           }
-          //timer bar
-          function progress(timeleft, timetotal, $element) {
-            var progressBarWidth = timeleft * $element.width() / timetotal;
-            $element
-                .find('div')
-                .animate({ width: progressBarWidth }, 500)
-                .html(timeleft + " seconds to go");
-            if(timeleft > 0) {
-                setTimeout(function() {
-                    progress(timeleft - 1, timetotal, $element);
-                }, 1000);
-            }
-        };
-        
-        progress(180, 180, $('.progressBar'));
-          //need to add border so dot doesnt run off of canvas
-          
-          //need to add life bar https://developer.mozilla.org/en-US/docs/Games/Tutorials/2D_breakout_game_Phaser/Extra_lives
-          //need to add timer bar https://codeburst.io/a-countdown-timer-in-pure-javascript-f3cdaae1a1a3
-          
-          //MODAL CODE-------------
+//where things get messy----------------------
+// function createArtistInput(){
+//     var artistInput = document.createElement('input');
+//     artistInput.className = "artistsNameOfDrawing";
+  
+//     return artistInput;
+//   }
+  var submitButton = document.getElementById("submit-button");
 
-          // Get the modal
-var modal = document.getElementById('instructionsBox');
+  submitButton.onclick = function(){
+    var artistInput = document.createElement('input');
+    artistInput.className = "artistsNameOfDrawing";
+    console.log("artist input has been submitted");
+    return artistInput;
+  }
 
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
+   
 
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+function createTeamGuess(){
+    var teamGuess = document.createElement('input');
+    teamGuess.className = "teamGuess";
+  
+    return teamGuess;
+  }
+    var correctGuess;
+    var incorrectGuess;
 
-// When the user clicks on the button, open the modal 
-btn.onclick = function() {
-    modal.style.display = "block";
-}
+    function compareGuessedAnswer (){
+      if (teamGuess.includes(artistInput)){
+        teamGuess = correctGuess;
+        return correctGuess;
+      }else{
+        teamGuess = incorrectGuess;
+        return incorrectGuess;
+      }
+      }
+//timer-----------------
+var i = 100;
+var counterBack = setInterval(function () {
+  i--;
+  if (i >= 0) {
+    $('.progress-bar').css('width', i + '%');
+  // } else if (i===0){
+  //       document.getElementByID(“whatsYourGuess”).style.display = ‘block’;
+  //       console.log("timer is finished"); 
+      }else{
+    clearInterval(counterBack);
+  }
+}, 1000);
 
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-    modal.style.display = "none";
-}
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
-     
+ //need to add border so dot doesnt run off of canvas
+ //need to add life bar https://developer.mozilla.org/en-US/docs/Games/Tutorials/2D_breakout_game_Phaser/Extra_lives
+ //need to add timer bar https://codeburst.io/a-countdown-timer-in-pure-javascript-f3cdaae1a1a3

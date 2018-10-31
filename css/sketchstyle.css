@@ -1,78 +1,47 @@
 
-
+.progress {
+    width: 700px;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
 .screen-grid {
 	background-color: #F4F3F0;
     border: 60px solid #e90d0d; 
     border-radius: 20px; 
-    /* border-image-source: "./images/etch-a-sketch-border.png", 30;  */
-    margin: auto;
-  
-}
-
-.whatDoYouWantToDraw {
-
-}
-.beginDrawingButton {
-
-
-}
-
-.whatIsYourGuess{
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 700px;
+    }
+.scoreboard{
+    display: block;
     
+
+}
+    /* border-image-source: "./images/etch-a-sketch-border.png", 30;  */
+
+/* ugh these keep breaking the game // i think its a timing of loading thing-->  */
+/* .teamOneScoreButton{
+    background-color: blue;
+    color: white;
+}
+.teamOneScore {
+    background-color: white;
+    color: black
 }
 
-.progress-Bar {
-    width: 923px;
-    margin: 10px auto;
-    height: 22px;
-    background-color: #0A5F44;
-  }
-  
-  .progress-Bar div {
-    height: 100%;
-    text-align: right;
-    padding: 0 10px;
-    line-height: 22px; /* same as #progressBar height if we want text middle aligned */
-    width: 0;
-    background-color: #CBEA00;
-    box-sizing: border-box;
-  }
+.teamTwoScoreButton{
+    background-color: blue;
+    color: white;
 
-
-  /* The Modal (background) */
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
-/* Modal Content/Box */
-.modal-content {
-    background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
-}
-
-/* The Close Button */
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
+.teamTwoScore{
+        background-color: white;
+        color:black;
+    } */

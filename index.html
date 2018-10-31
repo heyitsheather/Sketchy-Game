@@ -5,39 +5,107 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>sketcheration</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/sketchstyle.css">
 </head>
 <body>
 <header>
     <h1>Sketcheration</h1>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+        BEGIN GAME
+      </button>  
 </header>
 
-    <div class="progress-Bar"></div>
+<!-- timer bar -->
+<div class="progress">
+    <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">TIME REMAINING</div>
+  </div>
 
-    <button id="myBtn">PLAY SKETCHERATION</button>
+<!-- scoreboard -->
+  <div class= "scoreboard">
+    <button type="button" class="btn btn-primary">
+      TEAM 1 <span class="badge badge-light">4</span>
+    </button>
+  
+    <button type="button" class="btn btn-primary">
+      TEAM 2 <span class="badge badge-light">4</span>
+    </button>
+  </div>
 
-    <div class="instructionsBox">
-
-        <div class="modal-content">
-          <span class="close">&times;</span>
-          <p>TEAM 1: WHAT ARE YOU GOING TO DRAW?</p>
-          <input class="whatDoYouWantToDraw">
-        </div>
-      
-      </div>
-
-
-
-
-   
-    <button class=beginDrawingButton>GO!</button>
-    <input class=whatIsYourGuess>
-
-    
-
+<!-- drawing screen -->
 <canvas class="screen-grid" width="700" height="500"></canvas>
 
+  <!-- Modals -->
+  <!-- initial modal -->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">TEAM 1: WHAT ARE YOU GOING TO DRAW?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Don't cheat! Only the artist should see what is entered here.
+        </div>
+        <div class="modal-footer">
+        <input class="artistsNameOfDrawing">
+          <button type="button" id="submit-button" class="btn submit-button" data-toggle="modal" data-dismiss="modal" data-target="#readyToDrawModal">
+            SUBMIT
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- ready to draw modal -->
+  <div class="modal fade" id="readyToDrawModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="readyToDrawModalTitle">Cool!</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+        Use the arrow keys to complete your masterpiece. You have 30 seconds. Ready to draw?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-start" data-dismiss="modal">START</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- artist guess modal -->
+  <div class="modal fade" id="whatsYourGuess" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="readyToGuessTitle">Sweet drawing, Artist!</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+        TEAM 1, What do you think the artist drew?
+        </div>
+        <div class="modal-footer">
+          <input class="teamGuess">
+          <button type="button" class="btn submit-button" data-toggle="modal" data-dismiss="modal" data-target="#readyToDrawModal">
+            SUBMIT
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<script src="./js/sketchy.js"></script>
+ 
+  
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<script src="./js/sketchy.js"></script> 
 </body>
 </html>
