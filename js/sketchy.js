@@ -87,9 +87,12 @@ var counterBack = setInterval(function () {
   //       document.getElementByID(“whatsYourGuess”).style.display = ‘block’;
   //       console.log("timer is finished"); 
       }else{
+        console.log("Progress bar gets to 0...");
+        // TODO invoke data target for whatsYourGuess modal
+        //document.getElementById("whatsYourGuess").style.display = "block";
     clearInterval(counterBack);
   }
-}, 1000);
+}, 100);
 
 
  //need to add border so dot doesnt run off of canvas
