@@ -24,11 +24,11 @@
 <!-- scoreboard -->
   <div class= "scoreboard">
     <button type="button" class="btn btn-primary">
-      TEAM 1 <span class="badge badge-light">4</span>
+      TEAM 1 <span class="badge badge-light teamOneScore">0</span>
     </button>
   
     <button type="button" class="btn btn-primary">
-      TEAM 2 <span class="badge badge-light">4</span>
+      TEAM 2 <span class="badge badge-light teamTwoScore">0</span>
     </button>
   </div>
 
@@ -96,6 +96,63 @@
             SUBMIT
           </button>
         </div>
+      </div>
+    </div>
+  </div>
+  <!-- correct modal -->
+  <div class="modal fade" id="correctModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="correctModalTitle">Correct!</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+        One point awarded to your team!
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary woohoo-button" data-dismiss="modal">WOOHOO!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- incorrect modal -->
+  <div class="modal fade" id="incorrectModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="incorrectTitle">OOPS!</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+        That's not what the artist titled this drawing.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary bummer-button" data-dismiss="modal">BUMMER</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- game over modal -->
+  <div class="modal fade" id="gameOverModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="gameOverTitle">THAT'S GAME!</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+        TEAM 1 WINS!
+        </div>
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-primary play-again" data-dismiss="modal">PLAY AGAIN?</button>
+        </div> -->
       </div>
     </div>
   </div>
