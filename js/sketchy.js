@@ -48,24 +48,15 @@ var ctx = canvas.getContext("2d");
             drawingLoop();
             });
           }
-//where things get messy----------------------
-// function createArtistInput(){
-//     var artistInput = document.createElement('input');
-//     artistInput.className = "artistsNameOfDrawing";
-  
-//     return artistInput;
-//   }
+
   var submitButton = document.querySelector(".submit-button");
+  var artistInput = document.querySelector(".artistsNameOfDrawing");
 
   submitButton.onclick = function(){
-    var artistInput = document.createElement('input');
     $(".begin-game-button").hide();
-    artistInput.className = "artistsNameOfDrawing";
-    console.log("artist input has been submitted");
-    return artistInput;
+    console.log("artist input has submitted " + artistInput.value);
   }
-
-  var enterGuess = document.getElementById("whatsYourGuess");
+ 
   var timer= document.querySelector(".progress");
   var scoreboard= document.querySelector(".scoreboard");
     $(".progress").hide();
@@ -77,10 +68,8 @@ var ctx = canvas.getContext("2d");
     $(".progress").show();
     $(".scoreboard").show();
     $(".screen-grid").show();
-    
-    
+  //timer-----------------------------//
     var i = 100;
-    
     var counterBack = setInterval(function () {
     i--;
     if (i >= 0) {
@@ -89,34 +78,36 @@ var ctx = canvas.getContext("2d");
         }else{
           console.log("Drawing timer has finished");
           $('#whatsYourGuess').modal('show');
-         
-          //document.getElementById("whatsYourGuess").style.display = "block";
       clearInterval(counterBack);
     }
   }, 100);
   }
 
- 
+//where things get messy----------------------
+
    
+var teamGuess = document.querySelector(".teamGuess");
+var guessSubmitButton = document.querySelector(".guess-submit");
 
-function createTeamGuess(){
-    var teamGuess = document.createElement('input');
-    teamGuess.className = "teamGuess";
+guessSubmitButton.onclick = function(){
+    console.log ("team guessed " + teamGuess.value);
+    
+    
   
-    return teamGuess;
-  }
-    var correctGuess;
-    var incorrectGuess;
+var correctGuess;
+var incorrectGuess;
 
-    function compareGuessedAnswer (){
-      if (teamGuess.includes(artistInput)){
-        teamGuess = correctGuess;
-        return correctGuess;
-      }else{
-        teamGuess = incorrectGuess;
-        return incorrectGuess;
-      }
-      }
+function compareGuessedAnswer (){
+    if (teamGuess.includes(artistInput)){
+      teamGuess = correctGuess;
+      console.log("team guessed correctly");
+      return correctGuess;
+    }else{
+      teamGuess = incorrectGuess;
+      return incorrectGuess;
+    }
+    }
+  }
 //timer-----------------
 // var i = 100;
 // var counterBack = setInterval(function () {
