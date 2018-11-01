@@ -3,6 +3,13 @@
 var canvas = document.querySelector(".screen-grid");
 var ctx = canvas.getContext("2d");
 
+
+// var timer= document.querySelector(".progress");
+// var scoreboard= document.querySelector(".scoreboard");
+// $(".progress").hide();
+// $(".scoreboard").hide();
+
+
 // getting the initial drawing dot
     var dotImg = new Image();
     dotImg.src = "./images/dot.jpg";
@@ -48,15 +55,48 @@ var ctx = canvas.getContext("2d");
   
 //     return artistInput;
 //   }
-  var submitButton = document.getElementById("submit-button");
+  var submitButton = document.querySelector(".submit-button");
 
   submitButton.onclick = function(){
     var artistInput = document.createElement('input');
+    $(".begin-game-button").hide();
     artistInput.className = "artistsNameOfDrawing";
     console.log("artist input has been submitted");
     return artistInput;
   }
 
+  var enterGuess = document.getElementById("whatsYourGuess");
+  var timer= document.querySelector(".progress");
+  var scoreboard= document.querySelector(".scoreboard");
+    $(".progress").hide();
+    $(".scoreboard").hide();
+    $(".screen-grid").hide();
+ 
+  var startButton = document.querySelector(".start-button");  
+  startButton.onclick = function(){
+    $(".progress").show();
+    $(".scoreboard").show();
+    $(".screen-grid").show();
+    
+    
+    var i = 100;
+    
+    var counterBack = setInterval(function () {
+    i--;
+    if (i >= 0) {
+      $('.progress-bar').css('width', i + '%');
+        console.log("game has started");
+        }else{
+          console.log("Drawing timer has finished");
+          $('#whatsYourGuess').modal('show');
+         
+          //document.getElementById("whatsYourGuess").style.display = "block";
+      clearInterval(counterBack);
+    }
+  }, 100);
+  }
+
+ 
    
 
 function createTeamGuess(){
@@ -78,21 +118,21 @@ function createTeamGuess(){
       }
       }
 //timer-----------------
-var i = 100;
-var counterBack = setInterval(function () {
-  i--;
-  if (i >= 0) {
-    $('.progress-bar').css('width', i + '%');
-  // } else if (i===0){
-  //       document.getElementByID(“whatsYourGuess”).style.display = ‘block’;
-  //       console.log("timer is finished"); 
-      }else{
-        console.log("Progress bar gets to 0...");
-        // TODO invoke data target for whatsYourGuess modal
-        //document.getElementById("whatsYourGuess").style.display = "block";
-    clearInterval(counterBack);
-  }
-}, 100);
+// var i = 100;
+// var counterBack = setInterval(function () {
+//   i--;
+//   if (i >= 0) {
+//     $('.progress-bar').css('width', i + '%');
+//   // } else if (i===0){
+//   //       document.getElementByID(“whatsYourGuess”).style.display = ‘block’;
+//   //       console.log("timer is finished"); 
+//       }else{
+//         console.log("Progress bar gets to 0...");
+//         // TODO invoke data target for whatsYourGuess modal
+//         //document.getElementById("whatsYourGuess").style.display = "block";
+//     clearInterval(counterBack);
+//   }
+// }, 100);
 
 
  //need to add border so dot doesnt run off of canvas
