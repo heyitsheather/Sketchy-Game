@@ -125,20 +125,67 @@ var ctx = canvas.getContext("2d");
 
   
  
+
 var teamGuess = document.querySelector(".teamGuess");
 var teamGuess2= document.querySelector(".teamGuess2");
+var artistInput = document.querySelector(".artistsNameOfDrawing");
+var artistInput2 = document.querySelector(".artistsNameOfDrawing2");
 
 var guessSubmitButton2 = document.querySelector(".guess-submit2")
+
+// if (teamGuess2.value.includes(artistInput2.value)){
+//   console.log ("team guessed " + teamGuess2.value);
+//   teamGuess2.value = correctGuess;
+//   console.log("team guessed correctly");
+//   $('#correctModal').modal('show');
+//   updateTeamTwoScore ()
+// }
+// else{
+//   // teamGuess2.value = incorrectGuess;
+//   console.log("team guessed incorrectly");
+//   $('#incorrectModal').modal('show');
+ 
+//}
 
 var guessSubmitButton = document.querySelector(".guess-submit");
 guessSubmitButton.onclick = function(){
   console.log ("team guessed " + teamGuess.value);
-    compareGuessedAnswer ();
+  if (teamGuess.value.includes(artistInput.value)){
+    teamGuess.value = correctGuess;
+    console.log("team guessed correctly");
+    $('#correctModal2').modal('show');
+    updateTeamOneScore ()
+    
+  }
+  else {
+    // teamGuess.value = incorrectGuess
+  console.log("team guessed incorrectly");
+  $('#incorrectModal2').modal('show');
+  
+}
+
+
     $(".progress").hide();
 }
+
+
 guessSubmitButton2.onclick = function(){
   console.log("team guessed"+ teamGuess2.value);
-    compareGuessedAnswer ();
+  if (teamGuess2.value.includes(artistInput2.value)){
+    console.log ("team guessed " + teamGuess2.value);
+    teamGuess2.value = correctGuess;
+    console.log("team guessed correctly");
+    $('#correctModal').modal('show');
+    updateTeamTwoScore ()
+  }
+  else{
+    // teamGuess2.value = incorrectGuess;
+    console.log("team guessed incorrectly");
+    $('#incorrectModal').modal('show');
+   
+  }
+  
+    // compareGuessedAnswer ();
 }
     
   
@@ -172,38 +219,39 @@ function updateTeamTwoScore(){
 
 var correctGuess;
 var incorrectGuess; 
-function compareGuessedAnswer (){
+// function compareGuessedAnswer (){
 
-  var teamGuess = document.querySelector(".teamGuess");
-  var teamGuess2= document.querySelector(".teamGuess2");
-  var artistInput = document.querySelector(".artistsNameOfDrawing");
-  var artistInput2 = document.querySelector(".artistsNameOfDrawing2");
+  // var teamGuess = document.querySelector(".teamGuess");
+  // var teamGuess2= document.querySelector(".teamGuess2");
+  // var artistInput = document.querySelector(".artistsNameOfDrawing");
+  // var artistInput2 = document.querySelector(".artistsNameOfDrawing2");
 
-  if (teamGuess.value.includes(artistInput.value)){
-    teamGuess.value = correctGuess;
-    console.log("team guessed correctly");
-    $('#correctModal').modal('show');
-    updateTeamOneScore ()
+//   if (teamGuess.value.includes(artistInput.value)){
+//     teamGuess.value = correctGuess;
+//     console.log("team guessed correctly");
+//     $('#correctModal').modal('show');
+//     updateTeamOneScore ()
     
-  }
-  else if (teamGuess.value = incorrectGuess){
-  console.log("team guessed incorrectly");
-  $('#incorrectModal').modal('show');
+//   }
+//   else {
+//     // teamGuess.value = incorrectGuess
+//   console.log("team guessed incorrectly");
+//   $('#incorrectModal').modal('show');
   
-}
-  else if (teamGuess2.value.includes(artistInput2.value)){
-    teamGuess2.value = correctGuess;
-    console.log("team guessed correctly");
-    $('#correctModal').modal('show');
-    updateTeamTwoScore ()
-  }
-  else{
-    teamGuess2.value = incorrectGuess;
-    console.log("team guessed incorrectly");
-    $('#incorrectModal').modal('show');
+// }
+//   if (teamGuess2.value.includes(artistInput2.value)){
+//     teamGuess2.value = correctGuess;
+//     console.log("team guessed correctly");
+//     $('#correctModal').modal('show');
+//     updateTeamTwoScore ()
+//   }
+//   else{
+//     // teamGuess2.value = incorrectGuess;
+//     console.log("team guessed incorrectly");
+//     $('#incorrectModal').modal('show');
    
-  }
-}
+//   }
+// }
 
 function checkForTeamOneWinner () {
   var teamOneScore = document.querySelector('.teamOneScore');
