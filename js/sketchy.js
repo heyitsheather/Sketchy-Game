@@ -120,7 +120,7 @@ var ctx = canvas.getContext("2d");
         $('#whatsYourGuess2').modal('show');
     clearInterval(counterBack);
   }
-}, 100);
+}, 300);
   }
 
   
@@ -153,14 +153,14 @@ guessSubmitButton.onclick = function(){
   if (teamGuess.value.includes(artistInput.value)){
     teamGuess.value = correctGuess;
     console.log("team guessed correctly");
-    $('#correctModal2').modal('show');
+    $('#correctModal').modal('show');
     updateTeamOneScore ()
     
   }
   else {
     // teamGuess.value = incorrectGuess
   console.log("team guessed incorrectly");
-  $('#incorrectModal2').modal('show');
+  $('#incorrectModal').modal('show');
   
 }
 
@@ -175,13 +175,13 @@ guessSubmitButton2.onclick = function(){
     console.log ("team guessed " + teamGuess2.value);
     teamGuess2.value = correctGuess;
     console.log("team guessed correctly");
-    $('#correctModal').modal('show');
+    $('#correctModal2').modal('show');
     updateTeamTwoScore ()
   }
   else{
     // teamGuess2.value = incorrectGuess;
     console.log("team guessed incorrectly");
-    $('#incorrectModal').modal('show');
+    $('#incorrectModal2').modal('show');
    
   }
   
@@ -254,6 +254,7 @@ var incorrectGuess;
 // }
 
 function checkForTeamOneWinner () {
+  
   var teamOneScore = document.querySelector('.teamOneScore');
     if (parseInt(teamOneScore.textContent)===3){
     $('#gameOverModal').modal('show');
@@ -265,6 +266,7 @@ function checkForTeamOneWinner () {
 
   }
 }
+
 function checkForTeamTwoWinner () {
   var teamTwoScore = document.querySelector('.teamTwoScore');
   if (parseInt(teamTwoScore.textContent)===3){
