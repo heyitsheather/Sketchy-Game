@@ -1,21 +1,15 @@
-// Test
-// $('#team2readytoenter').on('shown.bs.modal', function () {
-//   console.log('calling crazy function');
-//   $('#pippo').focus();
-// })  
-
 //making the grid:
 var canvas = document.querySelector(".screen-grid");
 var ctx = canvas.getContext("2d");
 
+
 // getting the initial drawing dot
-//need to add border so dot doesnt run off of canvas
-    var dotImg = new Image();
+var dotImg = new Image();
     dotImg.src = "./images/dot.jpg";
     
 // initial dot position
-    var dotx = 20;
-    var doty = 20;
+var dotx = 20;
+var doty = 20;
 
 //start drawing
     drawingLoop();
@@ -40,13 +34,13 @@ var ctx = canvas.getContext("2d");
           }
         };
     
-        function drawingLoop() {
+  function drawingLoop() {
          
-            ctx.drawImage(dotImg, dotx, doty, 10, 10);
-            requestAnimationFrame(function () {
-            drawingLoop();
-            });
-          }
+    ctx.drawImage(dotImg, dotx, doty, 10, 10);
+    requestAnimationFrame(function () {
+    drawingLoop();
+    });
+    }
 
   var submitButton = document.querySelector(".submit-button");
   var submitButton2 = document.querySelector(".submit-button2");
@@ -59,7 +53,6 @@ var ctx = canvas.getContext("2d");
   }
 
   submitButton2.onclick = function(){
-    // $(".begin-game-button").hide();
     console.log("artist input has submitted " + artistInput2.value);
   }
  
@@ -79,7 +72,7 @@ var ctx = canvas.getContext("2d");
     $(".screen-grid").show();
     $(".progress2").hide();
 
-  //timer-----------------------------//
+  // team 1 timer-----------------------------//
     var i = 100;
     var counterBack = setInterval(function () {
     i--;
@@ -87,16 +80,11 @@ var ctx = canvas.getContext("2d");
       $('.progress-bar').css('width', i + '%');
         console.log("game has started");
         }else{
-          // $(".progress").hide();
-          // $(".scoreboard").hide();
-          // $(".screen-grid").hide();
           console.log("Drawing timer has finished");
           $('#whatsYourGuess').modal('show');
       clearInterval(counterBack);
     }
   }, 300);
-  // $(".progress").hide();
-
   }
 
   var startButton2= document.querySelector(".start-button2");
@@ -104,7 +92,8 @@ var ctx = canvas.getContext("2d");
   $(".progress2").show();
   $(".scoreboard").show();
   $(".screen-grid").show();
-// timer-----------------------------//
+
+// team 2 timer-----------------------------//
   var j = 100;
   var counterBack = setInterval(function () {
   j--;
@@ -113,9 +102,6 @@ var ctx = canvas.getContext("2d");
     // $('.progress-bar2').css('width', j + '%');
       console.log("game has started");
       }else{
-        // $(".progress").hide();
-        //   $(".scoreboard").hide();
-        //   $(".screen-grid").hide();
         console.log("Drawing timer has finished");
         $('#whatsYourGuess2').modal('show');
     clearInterval(counterBack);
@@ -124,30 +110,18 @@ var ctx = canvas.getContext("2d");
   }
 
   
- 
+ // game play ------------------------------------//
 
 var teamGuess = document.querySelector(".teamGuess");
 var teamGuess2= document.querySelector(".teamGuess2");
 var artistInput = document.querySelector(".artistsNameOfDrawing");
 var artistInput2 = document.querySelector(".artistsNameOfDrawing2");
-
-var guessSubmitButton2 = document.querySelector(".guess-submit2")
-
-// if (teamGuess2.value.includes(artistInput2.value)){
-//   console.log ("team guessed " + teamGuess2.value);
-//   teamGuess2.value = correctGuess;
-//   console.log("team guessed correctly");
-//   $('#correctModal').modal('show');
-//   updateTeamTwoScore ()
-// }
-// else{
-//   // teamGuess2.value = incorrectGuess;
-//   console.log("team guessed incorrectly");
-//   $('#incorrectModal').modal('show');
- 
-//}
-
 var guessSubmitButton = document.querySelector(".guess-submit");
+var guessSubmitButton2 = document.querySelector(".guess-submit2")
+var correctGuess;
+var incorrectGuess; 
+
+
 guessSubmitButton.onclick = function(){
   console.log ("team guessed " + teamGuess.value);
   if (teamGuess.value.includes(artistInput.value)){
@@ -158,13 +132,11 @@ guessSubmitButton.onclick = function(){
     
   }
   else {
-    // teamGuess.value = incorrectGuess
+    teamGuess.value = incorrectGuess
   console.log("team guessed incorrectly");
   $('#incorrectModal').modal('show');
   
 }
-
-
     $(".progress").hide();
 }
 
@@ -179,13 +151,11 @@ guessSubmitButton2.onclick = function(){
     updateTeamTwoScore ()
   }
   else{
-    // teamGuess2.value = incorrectGuess;
+    teamGuess2.value = incorrectGuess;
     console.log("team guessed incorrectly");
     $('#incorrectModal2').modal('show');
    
   }
-  
-    // compareGuessedAnswer ();
 }
     
   
@@ -193,18 +163,34 @@ guessSubmitButton2.onclick = function(){
 var woohooButton = document.querySelector(".woohoo-button");
 woohooButton.onclick = function(){
   checkForTeamOneWinner ();
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  artistInput.value = "";
+  teamGuess.value = "";
+
 }
 var woohooButton2 = document.querySelector(".woohoo-button2")
   woohooButton2.onclick = function(){
     checkForTeamTwoWinner ();
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    artistInput2.value = "";
+    teamGuess2.value = "";
 }
 
 var bummerButton = document.querySelector(".bummer-button");
-// bummerButton.onclick = function(){
-
-
+  bummerButton.onclick = function(){
+  checkForTeamOneWinner ();
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  artistInput.value = "";
+  teamGuess.value = "";
+}
 
 var bummerButton2 = document.querySelector(".bummer-button2");
+bummerButton2.onclick = function(){
+  checkForTeamTwoWinner ();
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  artistInput2.value = "";
+  teamGuess2.value = "";
+}
   
 
 function updateTeamOneScore(){
@@ -217,44 +203,8 @@ function updateTeamTwoScore(){
   teamTwoScore.textContent=(parseInt(teamTwoScore.textContent) + 1);
 }
 
-var correctGuess;
-var incorrectGuess; 
-// function compareGuessedAnswer (){
-
-  // var teamGuess = document.querySelector(".teamGuess");
-  // var teamGuess2= document.querySelector(".teamGuess2");
-  // var artistInput = document.querySelector(".artistsNameOfDrawing");
-  // var artistInput2 = document.querySelector(".artistsNameOfDrawing2");
-
-//   if (teamGuess.value.includes(artistInput.value)){
-//     teamGuess.value = correctGuess;
-//     console.log("team guessed correctly");
-//     $('#correctModal').modal('show');
-//     updateTeamOneScore ()
-    
-//   }
-//   else {
-//     // teamGuess.value = incorrectGuess
-//   console.log("team guessed incorrectly");
-//   $('#incorrectModal').modal('show');
-  
-// }
-//   if (teamGuess2.value.includes(artistInput2.value)){
-//     teamGuess2.value = correctGuess;
-//     console.log("team guessed correctly");
-//     $('#correctModal').modal('show');
-//     updateTeamTwoScore ()
-//   }
-//   else{
-//     // teamGuess2.value = incorrectGuess;
-//     console.log("team guessed incorrectly");
-//     $('#incorrectModal').modal('show');
-   
-//   }
-// }
 
 function checkForTeamOneWinner () {
-  
   var teamOneScore = document.querySelector('.teamOneScore');
     if (parseInt(teamOneScore.textContent)===3){
     $('#gameOverModal').modal('show');
@@ -268,6 +218,7 @@ function checkForTeamOneWinner () {
 }
 
 function checkForTeamTwoWinner () {
+
   var teamTwoScore = document.querySelector('.teamTwoScore');
   if (parseInt(teamTwoScore.textContent)===3){
     $('#gameOverModal2').modal('show');
@@ -279,11 +230,17 @@ function checkForTeamTwoWinner () {
   
     }
   }
+  var playAgainButton = document.querySelector(".play-again"); 
+  playAgainButton.onclick = function(){
+    window.location.reload();
+    
+  }
 
 
-
-
-
-  // display if answer is correct or not and then update score for team 2
-  // add a function for when a team wins
-  // add turns between team 1 and team 2
+// TO DO ////////////////////////////////////
+  
+  // add canvas border so dot doesnt run off of the page
+  // return dot to starting position each round
+  // add buttons for mobile play
+  // add small white space under timer
+  // force full screen play
